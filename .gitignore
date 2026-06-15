@@ -1,0 +1,4 @@
+# Private learner memory — never commit real child records to a public repo
+FamilyTutorKit/learners/*
+!FamilyTutorKit/learners/README.md
+!FamilyTutorKit/learners/_template-learner/
