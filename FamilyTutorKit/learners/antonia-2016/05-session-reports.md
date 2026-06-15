@@ -3,7 +3,7 @@ memory_file: 05-session-reports
 learner_id: antonia-2016
 learner_display_name: Antonia Yannakis
 version: 0.1.0
-last_updated: 2026-06-14
+last_updated: 2026-06-15
 privacy: private
 ---
 
@@ -12,6 +12,33 @@ privacy: private
 Session reports are concise parent-readable summaries. They are not a replacement for evidence entries.
 
 ## Reports
+
+### Session 2026-06-15-001
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-06-15 |
+| Duration | unknown |
+| Subject | Mathematics |
+| Objective | Follow-up practice with midpoints and introductory Pythagoras |
+| Evidence IDs | 2026-06-15-001 |
+| Next step | Short mixed review with written working and a deliberate arithmetic check before moving faster |
+
+#### Summary
+
+Antonia had another mathematics session around midpoints and Pythagoras. The important observation was that she can rush basic arithmetic and miss simple calculations, so accuracy habits should be built into the next few sessions.
+
+#### What Worked
+
+The session continued the coordinate-geometry extension pathway and began connecting it with right-triangle/Pythagoras thinking.
+
+#### What Needs Review
+
+Do not treat midpoint or Pythagoras as fully secure yet. Review with a small number of problems where Antonia writes each arithmetic step, checks signs and operations, and verifies the final answer.
+
+#### Parent Follow-Up
+
+Use a "slow is smooth" routine: read the problem, mark the method, calculate carefully, then do a final arithmetic check. Praise catching errors during checking as much as getting the first answer right.
 
 ### Session 2026-06-14-001
 
