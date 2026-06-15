@@ -1,0 +1,139 @@
+---
+memory_file: 02-evidence-log
+learner_id: antonia-2016
+learner_display_name: Antonia Yannakis
+version: 0.1.0
+last_updated: 2026-06-14
+privacy: private
+append_only: true
+---
+
+# Evidence Log
+
+Append new evidence at the top under `Evidence Entries`. Do not rewrite old evidence except to add a dated correction note.
+
+## Evidence Entries
+
+### Evidence 2026-06-14-003
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-06-14 |
+| Session ID | session-2026-06-14-002 |
+| Subject | Mathematics |
+| Domain | Coordinate geometry |
+| Skill ID | maths-coordinate-midpoint-001 |
+| Activity | Drew a coordinate line/graph from A=(0,0) to B=(10,10) and identified the midpoint C=(5,5) |
+| Time spent | unknown |
+| Result | completed |
+| Assistance level | parent-guided |
+| Confidence | observed from parent-submitted photo |
+| Next review | 2026-06-17 |
+
+#### Observed Evidence
+
+Parent reported this midpoint task was completed for Antonia. The submitted whiteboard photo shows axes from 0 to 10, a line from A=(0,0) to B=(10,10), dotted guide lines to the midpoint, and C marked at (5,5). Work on the board also shows the averaging idea: 0+10 over 2 equals 5 for each coordinate.
+
+#### Learner Explanation Or Exact Words
+
+unknown
+
+#### Errors Or Misconceptions
+
+None recorded for this introductory positive-coordinate example. Independence and verbal explanation are not yet fully recorded.
+
+#### Parent Notes
+
+Parent said Antonia was about to do a new line after this example. Recommended next line: A=(2,4), B=(8,10), midpoint C=(5,7), then later include a negative coordinate if she is confident.
+
+#### AI Interpretation
+
+This is valid first observed evidence for midpoint on the coordinate plane using a clean visual example. Treat as developing, not secure, until Antonia solves a new line independently and explains the method.
+
+#### Correction Notes
+
+none
+
+### Evidence 2026-06-14-002
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-06-14 |
+| Session ID | session-2026-06-14-001 |
+| Subject | Mathematics |
+| Domain | Coordinate geometry |
+| Skill ID | maths-coordinate-midpoint-001 |
+| Activity | Midpoint formula after coordinate plotting and distance; practice problems and reverse-endpoint challenge |
+| Time spent | unknown |
+| Result | successful |
+| Assistance level | independent |
+| Confidence | observed |
+| Next review | 2026-06-17 |
+
+#### Observed Evidence
+
+Parent reports Antonia nailed midpoint work. She completed practice problems including A=(2,2), B=(8,6); A=(−2,4), B=(6,10); A=(−5,−1), B=(3,7) and the challenge where one endpoint A=(2,3) and midpoint M=(5,7) required finding the other endpoint (8,11). Session followed naturally from plotting points and finding distance.
+
+#### Learner Explanation Or Exact Words
+
+unknown
+
+#### Errors Or Misconceptions
+
+None reported on clean integer-coordinate examples.
+
+#### Parent Notes
+
+Recommendation after session: reinforce rather than race ahead into gradient. Next problems should include negative coordinates and distances that do not produce whole-number answers. Move to slope after midpoint is solid; teach slope before trigonometry.
+
+#### AI Interpretation
+
+Introductory Victorian Curriculum Level 9 coordinate geometry handled successfully at Year 6 with clean examples. Indicates strong conceptual uptake with visual sequential teaching, not yet broad proof of multi-year acceleration.
+
+#### Correction Notes
+
+2026-06-14 correction: parent clarified that Antonia had not previously completed the broader midpoint set described here. This entry overstated the completed work and should not be used as evidence for independent success on multiple midpoint problems, negative-coordinate examples, reverse endpoint work, or coordinate distance. Use Evidence 2026-06-14-003 as the current observed midpoint evidence.
+
+### Evidence 2026-sem1-report-001
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-06-14 |
+| Session ID | n/a |
+| Subject | Multiple |
+| Domain | Semester 1 school report |
+| Skill ID | multiple |
+| Activity | Semester 1 teacher report summary |
+| Time spent | n/a |
+| Result | strong overall performance |
+| Assistance level | n/a |
+| Confidence | observed |
+| Next review | end of Semester 2 |
+
+#### Observed Evidence
+
+Semester 1 report: above standard in Reading, Writing and Mathematics. At standard in Speaking and Listening, Science, Technology, Media Arts and Economics/Business. Effort generally Very Good; Excellent in Visual Arts. Teacher describes her as highly capable, diligent, with distinctive authorial voice, genuine writing talent, strong academic confidence and effective use of feedback. No significant academic concerns.
+
+Writing standout: above expected in complex sentences, vocabulary, literary devices, expanding ideas; creativity and love of writing noted. Reading strong: analyses language and text structure, identifies imagery, examines historical/real-world context. Mathematics strong: above expected in much of fractions, number patterns, problem-solving, probability, data collection; foundational geometry and order-of-operations secure. Geometry and cross-sections secure but not consistently above expected.
+
+Main development area: social confidence — strong friendships but tends to remain within established circle; should become more comfortable with less-familiar classmates. Speaking and listening at standard while literacy is above. Attendance: six full-day absences, seven late arrivals, several partial-day absences. PE: backward passing while moving in rugby tag working towards; other PE skills established.
+
+#### Learner Explanation Or Exact Words
+
+n/a
+
+#### Errors Or Misconceptions
+
+n/a
+
+#### Parent Notes
+
+Does not need academic intervention. Needs continued extension, stronger oral confidence, broader peer interaction and improved punctuality. Weekly home routine: twice weekly challenging maths problem-solving (20–30 min); twice weekly substantial writing or editing; once weekly short oral presentation; one deliberate interaction outside usual friendship group each week.
+
+#### AI Interpretation
+
+Profile is extension-oriented, not remedial. Priority order: social confidence, speaking/listening lift, continued maths and writing challenge. Coordinate geometry session on 2026-06-14 aligns with extension approach.
+
+#### Correction Notes
+
+none
