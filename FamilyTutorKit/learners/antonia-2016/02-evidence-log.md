@@ -3,7 +3,7 @@ memory_file: 02-evidence-log
 learner_id: antonia-2016
 learner_display_name: Antonia Yannakis
 version: 0.1.0
-last_updated: 2026-06-14
+last_updated: 2026-06-15
 privacy: private
 append_only: true
 ---
@@ -13,6 +13,46 @@ append_only: true
 Append new evidence at the top under `Evidence Entries`. Do not rewrite old evidence except to add a dated correction note.
 
 ## Evidence Entries
+
+### Evidence 2026-06-15-001
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-06-15 |
+| Session ID | session-2026-06-15-001 |
+| Subject | Mathematics |
+| Domain | Coordinate geometry and right-triangle geometry |
+| Skill ID | maths-coordinate-midpoint-001; maths-pythagoras-001 |
+| Activity | Follow-up session around midpoints and Pythagoras |
+| Time spent | unknown |
+| Result | practiced; arithmetic accuracy issue observed |
+| Assistance level | parent-guided |
+| Confidence | observed from parent report |
+| Next review | 2026-06-18 |
+
+#### Observed Evidence
+
+Parent reported another session with Antonia around midpoint work and Pythagoras. During the session, Antonia sometimes rushed basic arithmetic and missed simple calculations.
+
+#### Learner Explanation Or Exact Words
+
+unknown
+
+#### Errors Or Misconceptions
+
+No specific midpoint or Pythagoras misconception was recorded. The observed issue was process-related: rushing arithmetic and making avoidable basic calculation errors.
+
+#### Parent Notes
+
+Slow the working down before increasing difficulty. Ask Antonia to write intermediate arithmetic clearly, estimate or sanity-check answers, and do one quick verification pass before finalising.
+
+#### AI Interpretation
+
+This evidence supports keeping midpoint as developing rather than secure and introducing Pythagoras cautiously. The main near-term teaching target is accuracy habit: pace, layout, and checking, not reteaching all underlying concepts.
+
+#### Correction Notes
+
+none
 
 ### Evidence 2026-06-14-003
 
