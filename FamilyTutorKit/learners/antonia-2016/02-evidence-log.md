@@ -3,7 +3,7 @@ memory_file: 02-evidence-log
 learner_id: antonia-2016
 learner_display_name: Antonia Yannakis
 version: 0.1.0
-last_updated: 2026-06-15
+last_updated: 2026-06-16
 privacy: private
 append_only: true
 ---
@@ -13,6 +13,48 @@ append_only: true
 Append new evidence at the top under `Evidence Entries`. Do not rewrite old evidence except to add a dated correction note.
 
 ## Evidence Entries
+
+### Evidence 2026-06-16-001
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-06-16 |
+| Session ID | session-2026-06-16-001 |
+| Subject | Mathematics |
+| Domain | Coordinate geometry and right-triangle geometry |
+| Skill ID | maths-coordinate-midpoint-001; maths-coordinate-distance-001; maths-pythagoras-001; maths-arithmetic-accuracy-001 |
+| Activity | Whiteboard coordinate problem using A=(1,1), B=(8,9), midpoint M=(4.5,5), and side lengths 7 and 8 |
+| Time spent | unknown |
+| Result | completed; midpoint and distance/Pythagoras reasoning shown |
+| Assistance level | parent-guided |
+| Confidence | observed from parent-submitted photo |
+| Next review | 2026-06-19 |
+
+#### Observed Evidence
+
+Parent submitted a photo of completed whiteboard work. The board shows a coordinate plane with A=(1,1), B=(8,9), and M=(4.5,5) marked on the segment. Dotted guide lines align M to x=4.5 and y=5. The work also shows a right triangle from A to B with horizontal side a=7, vertical side b=8, and the slanted side labelled with 113, indicating use of 7²+8²=113 for the squared distance.
+
+The board includes midpoint arithmetic consistent with the plotted points: 1+8=9 and 9/2=4.5 for the x-coordinate, and 1+9=10 and 10/2=5 for the y-coordinate. It also includes Pythagoras-related arithmetic: 10²=100 and 11²=121, suggesting comparison around the non-square value 113.
+
+#### Learner Explanation Or Exact Words
+
+unknown
+
+#### Errors Or Misconceptions
+
+No clear conceptual misconception is visible in the submitted work. The distance result appears to be represented as 113 on the hypotenuse, so clarify in review that 113 is the squared distance and the actual distance is √113, which is between 10 and 11.
+
+#### Parent Notes
+
+Good completed transfer from the first clean midpoint example to a non-integer midpoint. Next time, ask Antonia to say aloud: “the midpoint averages x and y separately” and “Pythagoras gives distance squared first, then I square-root it for the distance.” Continue requiring written arithmetic checks.
+
+#### AI Interpretation
+
+This is stronger evidence that Antonia can transfer midpoint to a new positive-coordinate example, including a decimal midpoint. It also provides fresh observed evidence for coordinate distance connected to Pythagoras. Keep midpoint as developing rather than secure until one more independent problem is observed, and keep distance/Pythagoras developing because the square-root distinction should be checked.
+
+#### Correction Notes
+
+none
 
 ### Evidence 2026-06-15-001
 
