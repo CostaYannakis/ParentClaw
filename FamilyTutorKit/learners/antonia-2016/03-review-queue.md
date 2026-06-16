@@ -3,13 +3,21 @@ memory_file: 03-review-queue
 learner_id: antonia-2016
 learner_display_name: Antonia Yannakis
 version: 0.1.0
-last_updated: 2026-06-15
+last_updated: 2026-06-16
 privacy: private
 ---
 
 # Review Queue
 
 Use this file for spaced review and retention checks.
+
+## Today
+
+For 2026-06-16, keep Antonia on a short, calm accuracy check rather than racing ahead. Use one midpoint problem and one Pythagoras/distance problem, with written working and a final arithmetic check.
+
+1. **Midpoint transfer:** Find the midpoint of A=(2,4) and B=(8,10). Expected answer: M=(5,7).
+2. **Another problem:** On a coordinate grid, points A=(1,2) and B=(7,10) form a right-triangle distance check. Horizontal change = 6, vertical change = 8, so distance AB = 10 by Pythagoras.
+3. **Watch for the problem:** The main issue to observe is not the concept first; it is whether she rushes basic arithmetic or skips the final check.
 
 ## Due Now
 
