@@ -3,7 +3,7 @@ memory_file: 05-session-reports
 learner_id: antonia-2016
 learner_display_name: Antonia Yannakis
 version: 0.1.0
-last_updated: 2026-06-15
+last_updated: 2026-06-16
 privacy: private
 ---
 
@@ -12,6 +12,33 @@ privacy: private
 Session reports are concise parent-readable summaries. They are not a replacement for evidence entries.
 
 ## Reports
+
+### Session 2026-06-16-001
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-06-16 |
+| Duration | unknown |
+| Subject | Mathematics |
+| Objective | Transfer midpoint work to a new coordinate segment and connect coordinate distance to Pythagoras |
+| Evidence IDs | 2026-06-16-001 |
+| Next step | One short independent coordinate problem that clearly distinguishes squared distance from actual distance |
+
+#### Summary
+
+Antonia completed a new coordinate-geometry whiteboard problem using A=(1,1), B=(8,9), and midpoint M=(4.5,5). The work also connected the horizontal and vertical changes, 7 and 8, to Pythagoras for the coordinate distance.
+
+#### What Worked
+
+The diagram linked the plotted points, midpoint guides, side lengths, and Pythagoras in one visual model. The midpoint arithmetic correctly produced a decimal midpoint, which is a useful transfer beyond the earlier whole-number example.
+
+#### What Needs Review
+
+Check the language around distance: 7²+8²=113 gives the squared distance, while the actual distance is √113, between 10 and 11. Also check whether Antonia can reproduce the method independently with calm written arithmetic.
+
+#### Parent Follow-Up
+
+Give one similar problem, such as A=(2,3) and B=(9,7). Ask Antonia to find the midpoint, draw the right triangle, calculate the squared distance, estimate between two whole-number square roots, and explain each step aloud.
 
 ### Session 2026-06-15-001
 
