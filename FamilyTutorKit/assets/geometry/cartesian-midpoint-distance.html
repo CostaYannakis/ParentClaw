@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cartesian Plane: Midpoint and Distance</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f4ec;
+      --panel: #ffffff;
+      --ink: #1f2933;
+      --muted: #5d6875;
+      --grid: #d7dee8;
+      --axis: #1f2933;
+      --accent-a: #0b78d0;
+      --accent-b: #d84a2b;
+      --mid: #178a55;
+      --triangle: #7c3aed;
+      --soft: #edf6ff;
+      --shadow: 0 18px 40px rgba(31, 41, 51, 0.12);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top left, #fff7d7 0, transparent 34rem), var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 2rem clamp(1rem, 3vw, 3rem) 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 { margin: 0 0 .5rem; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1; }
+    p { color: var(--muted); line-height: 1.55; }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(320px, 680px) minmax(300px, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 3vw, 3rem) 3rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(31, 41, 51, .08);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .graph-wrap { padding: 1rem; }
+
+    svg {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: block;
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid #d8dee8;
+      touch-action: none;
+    }
+
+    .grid-line { stroke: var(--grid); stroke-width: .45; }
+    .axis { stroke: var(--axis); stroke-width: 1.8; }
+    .tick-label { font-size: 3.3px; fill: var(--muted); user-select: none; }
+    .quadrant-label { font-size: 4px; fill: #9aa4b2; font-weight: 700; letter-spacing: .08em; }
+    .ab-line { stroke: #263238; stroke-width: 1.4; stroke-linecap: round; }
+    .guide { stroke: var(--triangle); stroke-width: 1.1; stroke-dasharray: 2 1.5; fill: none; }
+    .midpoint { fill: var(--mid); stroke: white; stroke-width: .8; }
+    .point { cursor: grab; stroke: white; stroke-width: 1; }
+    .point:active { cursor: grabbing; }
+    .point-label { font-size: 4px; font-weight: 800; fill: #111827; paint-order: stroke; stroke: white; stroke-width: 1; }
+
+    .controls { padding: 1.25rem; display: grid; gap: 1rem; }
+
+    .control-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+
+    fieldset {
+      border: 1px solid #e0e6ef;
+      border-radius: 18px;
+      padding: 1rem;
+      margin: 0;
+      background: #fbfcff;
+    }
+
+    legend { font-weight: 800; padding: 0 .4rem; }
+
+    label { display: grid; gap: .35rem; font-weight: 700; color: #344054; }
+
+    input[type="number"] {
+      width: 100%;
+      border: 1px solid #cfd8e3;
+      border-radius: 12px;
+      padding: .65rem .75rem;
+      font-size: 1rem;
+    }
+
+    .button-row { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: .75rem 1rem;
+      font-weight: 800;
+      color: white;
+      background: #2563eb;
+      cursor: pointer;
+    }
+
+    button.secondary { background: #475467; }
+    button.ghost { background: #eef2f7; color: #1f2933; }
+
+    .steps { padding: 1.25rem; display: grid; gap: 1rem; }
+    .steps h2, .controls h2 { margin: 0; }
+
+    .answer-box {
+      background: var(--soft);
+      border: 1px solid #cbe7ff;
+      border-radius: 18px;
+      padding: 1rem;
+    }
+
+    .formula {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 12px;
+      padding: .75rem;
+      overflow-x: auto;
+      margin: .5rem 0 0;
+    }
+
+    ol { margin: .25rem 0 0; padding-left: 1.4rem; }
+    li { margin: .55rem 0; line-height: 1.45; }
+    strong.a { color: var(--accent-a); }
+    strong.b { color: var(--accent-b); }
+    strong.m { color: var(--mid); }
+
+    .prompt {
+      background: #fff8e6;
+      border: 1px solid #f2d184;
+      border-radius: 18px;
+      padding: 1rem;
+    }
+
+    @media (max-width: 920px) { main { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cartesian Plane Teaching Aid</h1>
+    <p>Place points <strong>A</strong> and <strong>B</strong> on a four-quadrant grid from −10 to 10. The page draws the segment, midpoint, right-triangle guides, and step-by-step working for midpoint and distance using Pythagoras.</p>
+  </header>
+
+  <main>
+    <section class="card graph-wrap" aria-label="Interactive Cartesian plane">
+      <svg id="plane" viewBox="0 0 100 100" role="img" aria-labelledby="graphTitle graphDesc">
+        <title id="graphTitle">Four quadrant Cartesian plane</title>
+        <desc id="graphDesc">An interactive grid from negative ten to ten on both axes with draggable points A and B.</desc>
+        <g id="grid"></g>
+        <g id="plot"></g>
+      </svg>
+    </section>
+
+    <aside class="card">
+      <section class="controls">
+        <h2>Choose the points</h2>
+        <div class="control-grid">
+          <fieldset>
+            <legend>Point A</legend>
+            <label>x<sub>A</sub><input id="ax" type="number" min="-10" max="10" step="1" value="2"></label>
+            <label>y<sub>A</sub><input id="ay" type="number" min="-10" max="10" step="1" value="3"></label>
+          </fieldset>
+          <fieldset>
+            <legend>Point B</legend>
+            <label>x<sub>B</sub><input id="bx" type="number" min="-10" max="10" step="1" value="9"></label>
+            <label>y<sub>B</sub><input id="by" type="number" min="-10" max="10" step="1" value="7"></label>
+          </fieldset>
+        </div>
+        <div class="button-row">
+          <button id="randomBtn" type="button">New practice pair</button>
+          <button id="resetBtn" class="secondary" type="button">Reset example</button>
+          <button id="toggleBtn" class="ghost" type="button">Hide answers</button>
+        </div>
+        <p>Tip: drag A or B directly on the graph. Points snap to whole-number coordinates.</p>
+      </section>
+
+      <section class="steps" id="answers">
+        <h2>Systematic working</h2>
+        <div class="answer-box" id="summary"></div>
+        <div>
+          <h3>1. Midpoint method</h3>
+          <ol id="midSteps"></ol>
+        </div>
+        <div>
+          <h3>2. Length method using Pythagoras</h3>
+          <ol id="distanceSteps"></ol>
+        </div>
+        <div class="prompt">
+          <strong>Say it aloud:</strong>
+          <p id="oralPrompt"></p>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <script>
+    const svg = document.getElementById('plane');
+    const grid = document.getElementById('grid');
+    const plot = document.getElementById('plot');
+    const inputs = ['ax', 'ay', 'bx', 'by'].reduce((all, id) => ({ ...all, [id]: document.getElementById(id) }), {});
+    const summary = document.getElementById('summary');
+    const midSteps = document.getElementById('midSteps');
+    const distanceSteps = document.getElementById('distanceSteps');
+    const oralPrompt = document.getElementById('oralPrompt');
+    const answers = document.getElementById('answers');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const min = -10;
+    const max = 10;
+    const span = max - min;
+    let dragging = null;
+
+    function clampRound(value) {
+      return Math.max(min, Math.min(max, Math.round(Number(value) || 0)));
+    }
+
+    function toSvgX(x) { return ((x - min) / span) * 100; }
+    function toSvgY(y) { return 100 - ((y - min) / span) * 100; }
+    function fromSvgX(x) { return clampRound(min + (x / 100) * span); }
+    function fromSvgY(y) { return clampRound(min + ((100 - y) / 100) * span); }
+    function fmt(n) { return Number.isInteger(n) ? String(n) : String(Number(n.toFixed(2))); }
+
+    function makeSvg(name, attrs = {}) {
+      const el = document.createElementNS('http://www.w3.org/2000/svg', name);
+      for (const [key, value] of Object.entries(attrs)) el.setAttribute(key, value);
+      return el;
+    }
+
+    function drawGrid() {
+      grid.innerHTML = '';
+      for (let n = min; n <= max; n++) {
+        const x = toSvgX(n);
+        const y = toSvgY(n);
+        grid.appendChild(makeSvg('line', { class: n === 0 ? 'axis' : 'grid-line', x1: x, y1: 0, x2: x, y2: 100 }));
+        grid.appendChild(makeSvg('line', { class: n === 0 ? 'axis' : 'grid-line', x1: 0, y1: y, x2: 100, y2: y }));
+        if (n !== 0) {
+          grid.appendChild(makeSvg('text', { class: 'tick-label', x: x + .6, y: toSvgY(0) - .9 })).textContent = n;
+          grid.appendChild(makeSvg('text', { class: 'tick-label', x: toSvgX(0) + .8, y: y - .6 })).textContent = n;
+        }
+      }
+      [
+        ['Quadrant II', 14, 10], ['Quadrant I', 72, 10],
+        ['Quadrant III', 12, 92], ['Quadrant IV', 72, 92]
+      ].forEach(([label, x, y]) => grid.appendChild(makeSvg('text', { class: 'quadrant-label', x, y })).textContent = label);
+    }
+
+    function pointValues() {
+      return {
+        ax: clampRound(inputs.ax.value), ay: clampRound(inputs.ay.value),
+        bx: clampRound(inputs.bx.value), by: clampRound(inputs.by.value)
+      };
+    }
+
+    function syncInputs(values) {
+      Object.entries(values).forEach(([key, value]) => inputs[key].value = clampRound(value));
+    }
+
+    function render() {
+      const p = pointValues();
+      syncInputs(p);
+      const midX = (p.ax + p.bx) / 2;
+      const midY = (p.ay + p.by) / 2;
+      const dx = p.bx - p.ax;
+      const dy = p.by - p.ay;
+      const run = Math.abs(dx);
+      const rise = Math.abs(dy);
+      const distanceSquared = dx * dx + dy * dy;
+      const distance = Math.sqrt(distanceSquared);
+      const ax = toSvgX(p.ax), ay = toSvgY(p.ay), bx = toSvgX(p.bx), by = toSvgY(p.by);
+      const mx = toSvgX(midX), my = toSvgY(midY);
+      const cornerX = toSvgX(p.bx), cornerY = toSvgY(p.ay);
+
+      plot.innerHTML = '';
+      plot.appendChild(makeSvg('line', { class: 'guide', x1: ax, y1: ay, x2: cornerX, y2: cornerY }));
+      plot.appendChild(makeSvg('line', { class: 'guide', x1: cornerX, y1: cornerY, x2: bx, y2: by }));
+      plot.appendChild(makeSvg('line', { class: 'ab-line', x1: ax, y1: ay, x2: bx, y2: by }));
+      plot.appendChild(makeSvg('circle', { class: 'midpoint', cx: mx, cy: my, r: 1.8 }));
+      addPoint('A', p.ax, p.ay, 'accent-a');
+      addPoint('B', p.bx, p.by, 'accent-b');
+      addLabel('M', mx + 1.6, my - 1.8);
+
+      summary.innerHTML = `<strong class="a">A=(${p.ax}, ${p.ay})</strong>, <strong class="b">B=(${p.bx}, ${p.by})</strong><br><strong class="m">Midpoint M=(${fmt(midX)}, ${fmt(midY)})</strong><br>Length AB = √${distanceSquared} ≈ ${fmt(distance)}`;
+      midSteps.innerHTML = `
+        <li>Write the midpoint formula: <div class="formula">M = ((x₁ + x₂) ÷ 2, (y₁ + y₂) ÷ 2)</div></li>
+        <li>Substitute A and B: <div class="formula">M = ((${p.ax} + ${p.bx}) ÷ 2, (${p.ay} + ${p.by}) ÷ 2)</div></li>
+        <li>Calculate each coordinate separately: <div class="formula">M = (${fmt(midX)}, ${fmt(midY)})</div></li>`;
+      distanceSteps.innerHTML = `
+        <li>Find horizontal change and vertical change: <div class="formula">Δx = ${p.bx} − ${p.ax} = ${dx}; |Δx| = ${run}<br>Δy = ${p.by} − ${p.ay} = ${dy}; |Δy| = ${rise}</div></li>
+        <li>Use Pythagoras on the guide triangle: <div class="formula">AB² = ${run}² + ${rise}² = ${run * run} + ${rise * rise} = ${distanceSquared}</div></li>
+        <li>Square-root to get the actual length: <div class="formula">AB = √${distanceSquared} ≈ ${fmt(distance)}</div></li>`;
+      oralPrompt.textContent = `The midpoint averages x and y separately. Pythagoras gives the distance squared first, ${distanceSquared}, then I square-root it to get the actual distance, about ${fmt(distance)}.`;
+    }
+
+    function addPoint(name, x, y, colorVar) {
+      const cx = toSvgX(x), cy = toSvgY(y);
+      const circle = makeSvg('circle', { class: 'point', 'data-point': name, cx, cy, r: 2.2, fill: `var(--${colorVar})` });
+      plot.appendChild(circle);
+      addLabel(`${name} (${x}, ${y})`, cx + 1.8, cy - 2.2);
+    }
+
+    function addLabel(text, x, y) {
+      const label = makeSvg('text', { class: 'point-label', x, y });
+      label.textContent = text;
+      plot.appendChild(label);
+    }
+
+    Object.values(inputs).forEach(input => input.addEventListener('input', render));
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      syncInputs({ ax: 2, ay: 3, bx: 9, by: 7 });
+      render();
+    });
+
+    document.getElementById('randomBtn').addEventListener('click', () => {
+      let next;
+      do {
+        next = {
+          ax: Math.floor(Math.random() * 21) - 10,
+          ay: Math.floor(Math.random() * 21) - 10,
+          bx: Math.floor(Math.random() * 21) - 10,
+          by: Math.floor(Math.random() * 21) - 10
+        };
+      } while (next.ax === next.bx && next.ay === next.by);
+      syncInputs(next);
+      render();
+    });
+
+    toggleBtn.addEventListener('click', () => {
+      const hidden = answers.style.display === 'none';
+      answers.style.display = hidden ? 'grid' : 'none';
+      toggleBtn.textContent = hidden ? 'Hide answers' : 'Show answers';
+    });
+
+    svg.addEventListener('pointerdown', event => {
+      if (!event.target.matches('.point')) return;
+      dragging = event.target.dataset.point;
+      svg.setPointerCapture(event.pointerId);
+    });
+
+    svg.addEventListener('pointermove', event => {
+      if (!dragging) return;
+      const rect = svg.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      if (dragging === 'A') syncInputs({ ...pointValues(), ax: fromSvgX(x), ay: fromSvgY(y) });
+      if (dragging === 'B') syncInputs({ ...pointValues(), bx: fromSvgX(x), by: fromSvgY(y) });
+      render();
+    });
+
+    svg.addEventListener('pointerup', () => { dragging = null; });
+    svg.addEventListener('pointercancel', () => { dragging = null; });
+
+    drawGrid();
+    render();
+  </script>
+</body>
+</html>

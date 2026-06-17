@@ -19,3 +19,9 @@ Starter asset ideas:
 
 Each asset should follow `../LEARNING-ASSET-PROTOCOL.md`.
 
+## Available Assets
+
+| Asset | Launch | Purpose |
+| --- | --- | --- |
+| Cartesian Plane Midpoint And Distance Teaching Aid | `cartesian-midpoint-distance.html` | Place points A and B on a four-quadrant grid, draw AB, and solve midpoint and length step by step. |
+
