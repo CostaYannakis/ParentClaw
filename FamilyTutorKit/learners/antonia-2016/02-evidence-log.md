@@ -3,7 +3,7 @@ memory_file: 02-evidence-log
 learner_id: antonia-2016
 learner_display_name: Antonia Yannakis
 version: 0.1.0
-last_updated: 2026-06-16
+last_updated: 2026-06-17
 privacy: private
 append_only: true
 ---
@@ -13,6 +13,46 @@ append_only: true
 Append new evidence at the top under `Evidence Entries`. Do not rewrite old evidence except to add a dated correction note.
 
 ## Evidence Entries
+
+### Evidence 2026-06-17-001
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-06-17 |
+| Session ID | session-2026-06-17-001 |
+| Subject | Mathematics |
+| Domain | Coordinate geometry |
+| Skill ID | maths-coordinate-midpoint-001; maths-coordinate-slope-001 |
+| Activity | Midpoint lesson completed as presented; planning transition into base gradient/slope training |
+| Time spent | unknown |
+| Result | completed perfectly; no errors reported |
+| Assistance level | parent-reported |
+| Confidence | observed from parent report |
+| Next review | 2026-06-24 |
+
+#### Observed Evidence
+
+Parent reported that Antonia completed today's midpoint lesson as presented, perfectly and with no errors.
+
+#### Learner Explanation Or Exact Words
+
+unknown
+
+#### Errors Or Misconceptions
+
+No errors were reported in today's midpoint lesson. Gradient/slope has not yet been taught in this evidence entry.
+
+#### Parent Notes
+
+Move into base gradient/slope training next. Start visually: mark two points, draw the horizontal run and vertical rise, count the changes, then name gradient as rise divided by run. Keep one quick midpoint retrieval problem in the next week so the old skill stays active while the new one is introduced.
+
+#### AI Interpretation
+
+This is enough to treat the current midpoint lesson as secure for home-tutoring purposes, while still scheduling spaced review. The next coordinate-geometry target should be gradient/slope, introduced from diagrams before the formal formula.
+
+#### Correction Notes
+
+none
 
 ### Evidence 2026-06-16-001
 

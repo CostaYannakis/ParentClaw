@@ -3,7 +3,7 @@ memory_file: 05-session-reports
 learner_id: antonia-2016
 learner_display_name: Antonia Yannakis
 version: 0.1.0
-last_updated: 2026-06-16
+last_updated: 2026-06-17
 privacy: private
 ---
 
@@ -12,6 +12,33 @@ privacy: private
 Session reports are concise parent-readable summaries. They are not a replacement for evidence entries.
 
 ## Reports
+
+### Session 2026-06-17-001
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-06-17 |
+| Duration | unknown |
+| Subject | Mathematics |
+| Objective | Complete midpoint lesson and prepare for gradient/slope |
+| Evidence IDs | 2026-06-17-001 |
+| Next step | Begin base gradient/slope training through rise over run on a coordinate grid |
+
+#### Summary
+
+Antonia completed today's midpoint lesson as presented, perfectly and with no errors reported.
+
+#### What Worked
+
+The midpoint routine is now strong enough to stop treating it as the main active teaching problem. Keep it alive through short retrieval checks rather than repeating a full lesson.
+
+#### What Needs Review
+
+Slope/gradient is the next new concept. Teach it visually before formula-first work: count horizontal run, count vertical rise, then write gradient as rise/run.
+
+#### Parent Follow-Up
+
+Use A=(1,2), B=(7,5). Draw the line, then draw the right-triangle guide. Ask Antonia to count run = 6 and rise = 3, then simplify gradient = 3/6 = 1/2. Next, compare a falling line so she can name a negative gradient.
 
 ### Session 2026-06-16-001
 

@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fractions Footpath Number Line</title>
+  <style>
+    :root {
+      --sky: #dff3ff;
+      --grass: #75bd72;
+      --grass-dark: #438f52;
+      --path: #e7d4aa;
+      --path-edge: #9f7d4d;
+      --join: #7c6446;
+      --ink: #1f2933;
+      --muted: #536477;
+      --panel: #fffaf1;
+      --accent: #d84f36;
+      --blue: #246fb5;
+      --shadow: rgba(38, 41, 46, 0.16);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--sky) 0 46%, #c8eec2 46% 100%);
+    }
+
+    main {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto minmax(430px, 1fr) auto;
+    }
+
+    header {
+      padding: 22px clamp(16px, 4vw, 44px) 8px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      max-width: 680px;
+      color: #33485f;
+      font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+      line-height: 1.45;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border: 2px solid rgba(39, 78, 52, 0.24);
+      background: rgba(255, 250, 241, 0.92);
+      box-shadow: 0 10px 24px var(--shadow);
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    select,
+    .controls button {
+      min-height: 40px;
+      border: 2px solid #274e34;
+      background: #ffffff;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 700;
+    }
+
+    select { padding: 0 34px 0 10px; }
+
+    .controls button {
+      width: 42px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    .controls button:hover,
+    .controls button:focus-visible {
+      outline: 3px solid rgba(216, 79, 54, 0.35);
+      border-color: var(--accent);
+    }
+
+    .scene {
+      position: relative;
+      overflow: hidden;
+      min-height: 430px;
+      padding: clamp(20px, 4vw, 44px);
+    }
+
+    .sun {
+      position: absolute;
+      width: 84px;
+      aspect-ratio: 1;
+      top: 34px;
+      right: clamp(28px, 8vw, 110px);
+      border-radius: 50%;
+      background: #ffe07a;
+      box-shadow: 0 0 0 14px rgba(255, 224, 122, 0.22);
+    }
+
+    .ground {
+      position: absolute;
+      inset: auto 0 0;
+      height: 48%;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.08) 0 10px, transparent 10px 28px),
+        linear-gradient(180deg, var(--grass), var(--grass-dark));
+      z-index: 0;
+    }
+
+    .path-stage {
+      position: relative;
+      z-index: 1;
+      max-width: 1040px;
+      min-height: 350px;
+      margin: 0 auto;
+      display: grid;
+      align-items: center;
+    }
+
+    .path-wrap {
+      --segment-count: 5;
+      --path-left: clamp(54px, 8vw, 92px);
+      --path-right: clamp(86px, 12vw, 150px);
+      position: relative;
+      width: 100%;
+      padding: 120px var(--path-right) 94px var(--path-left);
+    }
+
+    .blocks {
+      display: grid;
+      grid-template-columns: repeat(var(--segment-count), minmax(0, 1fr));
+      height: clamp(70px, 10vw, 98px);
+      border: 3px solid var(--path-edge);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 16px 22px rgba(41, 57, 35, 0.2);
+      background: var(--path);
+    }
+
+    .block {
+      position: relative;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.32), transparent),
+        var(--path);
+      border-right: 3px solid rgba(124, 100, 70, 0.58);
+      font-weight: 900;
+      color: rgba(58, 42, 27, 0.72);
+    }
+
+    .block:last-child { border-right: 0; }
+
+    .marker {
+      position: absolute;
+      top: 212px;
+      left: calc(var(--path-left) + (var(--p) * ((100% - var(--path-left) - var(--path-right)) / var(--segment-count))));
+      width: 70px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      transform: translateX(-50%);
+      display: grid;
+      justify-items: center;
+      gap: 9px;
+    }
+
+    .marker::before {
+      content: "";
+      width: 3px;
+      height: 24px;
+      background: var(--join);
+    }
+
+    .fraction-label {
+      min-width: 54px;
+      padding: 6px 8px;
+      text-align: center;
+      background: #ffffff;
+      border: 2px solid #234b76;
+      border-radius: 6px;
+      box-shadow: 3px 5px 0 rgba(35, 75, 118, 0.16);
+      font-weight: 900;
+      font-size: 1rem;
+    }
+
+    .marker:hover .fraction-label,
+    .marker:focus-visible .fraction-label {
+      outline: 3px solid rgba(216, 79, 54, 0.35);
+      border-color: var(--accent);
+    }
+
+    .marker.active .fraction-label {
+      background: #fff0c2;
+      border-color: var(--accent);
+      color: #7b2618;
+      transform: scale(1.06);
+    }
+
+    .traveller {
+      position: absolute;
+      top: 72px;
+      left: calc(var(--path-left) + (var(--position) * ((100% - var(--path-left) - var(--path-right)) / var(--segment-count))));
+      width: 48px;
+      height: 92px;
+      transform: translateX(-50%);
+      transition: left 280ms ease;
+      z-index: 4;
+    }
+
+    .head {
+      width: 28px;
+      height: 28px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: #8b5639;
+      border: 3px solid #5b321e;
+    }
+
+    .body {
+      width: 32px;
+      height: 38px;
+      margin: -1px auto 0;
+      border-radius: 14px 14px 6px 6px;
+      background: var(--accent);
+      border: 3px solid #8f2d1d;
+    }
+
+    .legs {
+      width: 38px;
+      height: 24px;
+      margin: -2px auto 0;
+      background:
+        linear-gradient(112deg, transparent 0 30%, #1c4c7a 31% 55%, transparent 56%),
+        linear-gradient(68deg, transparent 0 36%, #1c4c7a 37% 60%, transparent 61%);
+    }
+
+    .start-label {
+      position: absolute;
+      top: 176px;
+      left: var(--path-left);
+      transform: translateX(-50%);
+      padding: 5px 9px;
+      background: #ffffff;
+      border: 2px solid #274e34;
+      border-radius: 6px;
+      font-weight: 900;
+    }
+
+    .destination {
+      position: absolute;
+      top: 76px;
+      left: calc(var(--path-left) + (var(--segment-count) * ((100% - var(--path-left) - var(--path-right)) / var(--segment-count))) + 72px);
+      width: 86px;
+      height: 112px;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+
+    .school-building {
+      position: absolute;
+      left: 6px;
+      top: 34px;
+      width: 74px;
+      height: 58px;
+      background: #fff5d6;
+      border: 3px solid #734b2b;
+      box-shadow: 5px 7px 0 rgba(76, 58, 42, 0.14);
+    }
+
+    .school-building::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -26px;
+      width: 54px;
+      height: 54px;
+      transform: translateX(-50%) rotate(45deg);
+      background: #d84f36;
+      border-left: 3px solid #734b2b;
+      border-top: 3px solid #734b2b;
+      z-index: -1;
+    }
+
+    .school-door {
+      position: absolute;
+      left: 31px;
+      bottom: -3px;
+      width: 18px;
+      height: 30px;
+      background: #246fb5;
+      border: 3px solid #234b76;
+    }
+
+    .school-window {
+      position: absolute;
+      top: 18px;
+      width: 14px;
+      height: 14px;
+      background: #dff3ff;
+      border: 2px solid #234b76;
+    }
+
+    .school-window.left { left: 10px; }
+    .school-window.right { right: 10px; }
+
+    .school-sign {
+      position: absolute;
+      left: 50%;
+      top: 5px;
+      transform: translateX(-50%);
+      padding: 2px 5px;
+      background: #ffffff;
+      border: 2px solid #734b2b;
+      font-size: 0.66rem;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .finish-label {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      min-width: 74px;
+      padding: 5px 6px;
+      text-align: center;
+      transform: translateX(-50%);
+      background: #ffffff;
+      border: 2px solid #4c3a2a;
+      border-radius: 6px;
+      font-weight: 900;
+    }
+
+    .info-bar {
+      margin: 0 clamp(16px, 4vw, 44px) 22px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .info {
+      min-height: 84px;
+      padding: 14px 16px;
+      background: var(--panel);
+      border: 2px solid rgba(39, 78, 52, 0.24);
+      box-shadow: 0 8px 18px rgba(38, 41, 46, 0.12);
+    }
+
+    .info strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #274e34;
+    }
+
+    .info span {
+      color: #42546b;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 760px) {
+      main { grid-template-rows: auto minmax(420px, 1fr) auto; }
+      .controls { width: 100%; justify-content: space-between; }
+      .scene { padding-inline: 12px; }
+      .path-wrap {
+        --path-left: 38px;
+        --path-right: 96px;
+        padding-top: 116px;
+      }
+      .marker {
+        top: 204px;
+        width: 58px;
+      }
+      .fraction-label {
+        min-width: 44px;
+        font-size: 0.84rem;
+        padding-inline: 5px;
+      }
+      .destination {
+        left: calc(var(--path-left) + (var(--segment-count) * ((100% - var(--path-left) - var(--path-right)) / var(--segment-count))) + 54px);
+        transform: translateX(-50%) scale(0.84);
+        transform-origin: top center;
+      }
+      .traveller { transform: translateX(-50%) scale(0.9); transform-origin: top center; }
+      .info-bar { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>Fractions Footpath</h1>
+        <p class="subtitle">Each block is one equal part of the walk from 0 to school at 1 whole. Click a fraction stop or use the buttons to move the person.</p>
+      </div>
+      <div class="controls" aria-label="Fraction controls">
+        <label for="denominator">Blocks</label>
+        <select id="denominator">
+          <option value="2">halves</option>
+          <option value="3">thirds</option>
+          <option value="4">quarters</option>
+          <option value="5" selected>fifths</option>
+          <option value="6">sixths</option>
+          <option value="8">eighths</option>
+        </select>
+        <button id="prev" type="button" aria-label="Previous fraction">-</button>
+        <button id="next" type="button" aria-label="Next fraction">+</button>
+      </div>
+    </header>
+
+    <section class="scene" aria-label="Simple fraction footpath number line">
+      <div class="sun" aria-hidden="true"></div>
+      <div class="ground" aria-hidden="true"></div>
+      <div class="path-stage">
+        <div class="path-wrap" id="pathWrap">
+          <div class="traveller" id="traveller" aria-label="Person standing on the selected fraction">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="legs"></div>
+          </div>
+          <div class="start-label">0</div>
+          <div class="blocks" id="blocks"></div>
+          <div class="markers" id="markers"></div>
+          <div class="destination" aria-label="School destination at one whole">
+            <div class="school-building">
+              <div class="school-sign">SCHOOL</div>
+              <div class="school-window left"></div>
+              <div class="school-window right"></div>
+              <div class="school-door"></div>
+            </div>
+            <div class="finish-label">1 whole</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-bar" aria-label="Selected fraction details">
+      <div class="info">
+        <strong id="selectedFraction">0</strong>
+        <span id="selectedMeaning">The person is at the start: zero of five equal blocks walked.</span>
+      </div>
+      <div class="info">
+        <strong>Equal parts</strong>
+        <span id="partsMeaning">The whole path is split into 5 same-size blocks.</span>
+      </div>
+      <div class="info">
+        <strong>Parent prompt</strong>
+        <span id="parentPrompt">Point to each join and count the blocks already walked.</span>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const pathWrap = document.querySelector("#pathWrap");
+    const blocks = document.querySelector("#blocks");
+    const markers = document.querySelector("#markers");
+    const traveller = document.querySelector("#traveller");
+    const denominatorSelect = document.querySelector("#denominator");
+    const prevButton = document.querySelector("#prev");
+    const nextButton = document.querySelector("#next");
+    const selectedFraction = document.querySelector("#selectedFraction");
+    const selectedMeaning = document.querySelector("#selectedMeaning");
+    const partsMeaning = document.querySelector("#partsMeaning");
+    const parentPrompt = document.querySelector("#parentPrompt");
+
+    let denominator = Number(denominatorSelect.value);
+    let numerator = 0;
+
+    function partName(count) {
+      const names = {
+        2: "halves",
+        3: "thirds",
+        4: "quarters",
+        5: "fifths",
+        6: "sixths",
+        8: "eighths"
+      };
+      return names[count] || `${count} parts`;
+    }
+
+    function fractionText(top, bottom) {
+      if (top === 0) return "0";
+      if (top === bottom) return "1";
+      return `${top}/${bottom}`;
+    }
+
+    function buildPath() {
+      pathWrap.style.setProperty("--segment-count", denominator);
+      blocks.innerHTML = "";
+      markers.innerHTML = "";
+
+      for (let i = 0; i < denominator; i += 1) {
+        const block = document.createElement("div");
+        block.className = "block";
+        block.textContent = i + 1;
+        blocks.appendChild(block);
+      }
+
+      for (let i = 0; i <= denominator; i += 1) {
+        const marker = document.createElement("button");
+        marker.type = "button";
+        marker.className = "marker";
+        marker.style.setProperty("--p", i);
+        marker.setAttribute("aria-label", `Move person to ${fractionText(i, denominator)}`);
+        marker.innerHTML = `<span class="fraction-label">${fractionText(i, denominator)}</span>`;
+        marker.addEventListener("click", () => {
+          numerator = i;
+          updateState();
+        });
+        markers.appendChild(marker);
+      }
+    }
+
+    function updateState() {
+      const fraction = fractionText(numerator, denominator);
+      traveller.style.setProperty("--position", numerator);
+      selectedFraction.textContent = fraction === "1" ? "1 whole" : fraction;
+
+      if (numerator === 0) {
+        selectedMeaning.textContent = `The person is at the start: zero of ${denominator} equal blocks walked.`;
+      } else if (numerator === denominator) {
+        selectedMeaning.textContent = `The person reached the school: ${denominator} of ${denominator} blocks is one whole.`;
+      } else {
+        selectedMeaning.textContent = `${numerator} of the ${denominator} equal blocks have been walked.`;
+      }
+
+      partsMeaning.textContent = `The whole path is split into ${denominator} equal ${partName(denominator)}.`;
+      parentPrompt.textContent = numerator === denominator
+        ? `Ask: why does ${denominator}/${denominator} land at the same place as 1 whole?`
+        : `Ask: what fraction names this stop, and how many blocks remain?`;
+
+      document.querySelectorAll(".marker").forEach((marker, index) => {
+        marker.classList.toggle("active", index === numerator);
+      });
+    }
+
+    denominatorSelect.addEventListener("change", () => {
+      denominator = Number(denominatorSelect.value);
+      numerator = Math.min(numerator, denominator);
+      buildPath();
+      updateState();
+    });
+
+    prevButton.addEventListener("click", () => {
+      numerator = Math.max(0, numerator - 1);
+      updateState();
+    });
+
+    nextButton.addEventListener("click", () => {
+      numerator = Math.min(denominator, numerator + 1);
+      updateState();
+    });
+
+    buildPath();
+    updateState();
+  </script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 system: family-tutor-kit
 version: 0.1.0
 asset_domain: fractions
-last_updated: 2026-06-14
+last_updated: 2026-06-17
 ---
 
 # Fractions Assets
@@ -19,3 +19,8 @@ Starter asset ideas:
 
 Each asset should follow `../LEARNING-ASSET-PROTOCOL.md`.
 
+## Available Assets
+
+| Asset | Launch | Purpose |
+| --- | --- | --- |
+| Fractions Footpath Number Line | `fraction-footpath-number-line.html` | Move a person from start 0 to school at 1 whole across equal blocks and name the fraction stops. |

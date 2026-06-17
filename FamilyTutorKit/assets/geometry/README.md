@@ -2,7 +2,7 @@
 system: family-tutor-kit
 version: 0.1.0
 asset_domain: geometry
-last_updated: 2026-06-14
+last_updated: 2026-06-17
 ---
 
 # Geometry Assets
@@ -24,4 +24,5 @@ Each asset should follow `../LEARNING-ASSET-PROTOCOL.md`.
 | Asset | Launch | Purpose |
 | --- | --- | --- |
 | Cartesian Plane Midpoint And Distance Teaching Aid | `cartesian-midpoint-distance.html` | Place points A and B on a four-quadrant grid, draw AB, and solve midpoint and length step by step. |
+| Cartesian Plane Gradient And Slope Teaching Aid | `cartesian-gradient-slope.html` | Place points A and B on a four-quadrant grid, draw rise/run guides, and solve gradient step by step. |
 
