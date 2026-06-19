@@ -3,7 +3,7 @@ memory_file: 02-evidence-log
 learner_id: antonia-2016
 learner_display_name: Antonia Yannakis
 version: 0.1.0
-last_updated: 2026-06-17
+last_updated: 2026-06-19
 privacy: private
 append_only: true
 ---
@@ -13,6 +13,46 @@ append_only: true
 Append new evidence at the top under `Evidence Entries`. Do not rewrite old evidence except to add a dated correction note.
 
 ## Evidence Entries
+
+### Evidence 2026-06-19-001
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-06-19 |
+| Session ID | session-2026-06-19-001 |
+| Subject | Mathematics |
+| Domain | Coordinate geometry and right-triangle geometry |
+| Skill ID | maths-coordinate-midpoint-001; maths-coordinate-distance-001; maths-coordinate-slope-001; maths-pythagoras-001; maths-arithmetic-accuracy-001 |
+| Activity | One coordinate task covering midpoint, length of line, and rise over run |
+| Time spent | unknown |
+| Result | completed one task; parent reported midpoint, line length, and rise-over-run work completed for one coordinate set |
+| Assistance level | parent-reported |
+| Confidence | parent report; coordinate set and exact answers not recorded |
+| Next review | 2026-06-22 |
+
+#### Observed Evidence
+
+Parent reported that Antonia completed one coordinate-geometry task using a single set of coordinates. The task included finding the midpoint, working out the length of the line, and using rise over run for gradient/slope.
+
+#### Learner Explanation Or Exact Words
+
+unknown
+
+#### Errors Or Misconceptions
+
+No errors were reported. Because the coordinates, written working, final distance value, and gradient sign were not provided, keep the evidence as a successful parent-reported practice item rather than a fully verified independent mastery check.
+
+#### Parent Notes
+
+Next time, record the coordinate pair, midpoint, horizontal run, vertical rise, gradient as a simplified fraction, squared distance, actual distance, and whether Antonia explained the sign of the gradient aloud.
+
+#### AI Interpretation
+
+This is useful consolidation because it combines the three linked coordinate-geometry ideas: midpoint, distance/length through a right-triangle model, and gradient as rise over run. Continue with mixed coordinate tasks, but keep checking that Antonia distinguishes squared distance from actual distance and explains gradient visually before using formulas.
+
+#### Correction Notes
+
+none
 
 ### Evidence 2026-06-17-001
 

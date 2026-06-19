@@ -3,7 +3,7 @@ memory_file: 05-session-reports
 learner_id: antonia-2016
 learner_display_name: Antonia Yannakis
 version: 0.1.0
-last_updated: 2026-06-17
+last_updated: 2026-06-19
 privacy: private
 ---
 
@@ -12,6 +12,33 @@ privacy: private
 Session reports are concise parent-readable summaries. They are not a replacement for evidence entries.
 
 ## Reports
+
+### Session 2026-06-19-001
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-06-19 |
+| Duration | unknown |
+| Subject | Mathematics |
+| Objective | Mixed coordinate-geometry practice: midpoint, line length, and rise over run |
+| Evidence IDs | 2026-06-19-001 |
+| Next step | Repeat with exact coordinates recorded, including midpoint, d², actual distance, rise, run, simplified gradient, and gradient sign |
+
+#### Summary
+
+Antonia completed one coordinate-geometry task that combined midpoint, length of line, and rise over run for a single coordinate set.
+
+#### What Worked
+
+This was a good consolidation task because it connected the coordinate segment, midpoint, right-triangle distance model, and gradient language in one problem.
+
+#### What Needs Review
+
+The exact coordinates and answers were not recorded, so the next session should capture the coordinate pair and written outcomes. Continue checking that Antonia separates squared distance from actual distance and explains gradient as rise over run from the diagram.
+
+#### Parent Follow-Up
+
+Give one similar mixed task. Record A and B, midpoint, run, rise, gradient, d², actual distance, and whether Antonia can explain the gradient sign aloud.
 
 ### Session 2026-06-17-001
 
